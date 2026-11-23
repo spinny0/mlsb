@@ -1,0 +1,22 @@
+[package]
+name = "mlsb"
+version = "0.0.7"
+edition = "2024"
+
+[dependencies]
+bytemuck = { version = "1", features = ["derive"] }
+eframe = { version = "=0.33.0", default-features = false, features = ["default_fonts", "wgpu"] }
+glam = { version = "0.30", features = ["serde"] }
+image = { version = "0.25", default-features = false, features = ["png", "hdr", "exr"] }
+half = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+wgpu = { version = "27", default-features = false, features = ["dx12", "vulkan", "wgsl"] }
+
+[dev-dependencies]
+naga = { version = "27", features = ["wgsl-in"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
